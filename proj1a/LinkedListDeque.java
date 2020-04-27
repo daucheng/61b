@@ -48,11 +48,64 @@ public class LinkedListDeque<T> {
     }
     public void printDeque(){
         Node a = sentinel;
-        while (a.next != a){
-            System.out.print(a.next.item);
+        while (a.next != sentinel ){
+            System.out.print(a.next.item + " ");
             a = a.next;
         }
+        System.out.println();   
     }
+    public T removeFirst(){
+        if (sentinel.next == sentinel){
+            return null;
+        }
+        T first = sentinel.next.item;
+        sentinel.next = sentinel.next.next;
+        sentinel.next.prev = sentinel;
+        size -= 1;
+        return first;        
+    }
+    public T removerLast(){
+        if (sentinel.next == sentinel){
+            return null;
+        }
+        T last = sentinel.prev.item;
+        sentinel.prev = sentinel.prev.prev;
+        sentinel.prev.next = sentinel;
+        size -= 1;
+        return last;
+    }
+    public T get(int index){
+        Node a = sentinel;
+        if (index > size()){
+            return null;
+        }
+        for (int i = 0; i <= index; i++){
+            a = a.next;
+        }
+        return a.item;
+    }
+    public T getRecursive(int index){
+        if (index > size()){
+            return null;
+        }        
+        return helper(sentinel.next, index);        
+    }
+    public T helper(Node a, int index){
+        if (index == 0){
+            return a.item;
+        }
+        return helper(a.next,index-1);
+    }
+    public static void main(String[] args) {
+        LinkedListDeque<Integer> q = new LinkedListDeque<>();
+        q.addFirst(1);
+        q.addLast(-1);
+        System.out.println("isEmpty: " + q.isEmpty());
+        System.out.println("size: " + q.size());
+        q.printDeque();
+        
+    }
+
 
 
 }
