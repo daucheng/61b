@@ -1,5 +1,5 @@
 
-public class ArrayDeque <T> {
+public class ArrayDeque <T> implements Deque<T> {
 
     /**
      * Field
@@ -24,11 +24,11 @@ public class ArrayDeque <T> {
     /**
      * Method
      */
-
+    @Override
     public int size(){
         return size;
     }
-
+    @Override
     public boolean isEmpty(){
         if (size() == 0){
             return true;
@@ -36,7 +36,7 @@ public class ArrayDeque <T> {
         return false;
     }
 
-    public   void resize(int newcapacity){
+    private void resize(int newcapacity){
         T[] newitems = (T []) new Object[newcapacity];
         //                 0   1  2  3  4  5
         //                [nF][x][x][x][nL][ ]      old items
@@ -50,7 +50,7 @@ public class ArrayDeque <T> {
         nextFirst = newFirst - 1;
         nextLast = newFirst + size();
     }
-
+    @Override
     public void addFirst(T item){
         if (size() >= (items.length/2)){
             resize(items.length * 2);
@@ -60,7 +60,7 @@ public class ArrayDeque <T> {
         size += 1;
         nextFirst = nextFirst - 1;
     }
-
+    @Override
     public void addLast(T item){
         if (size() >= (items.length/2)){
             resize(items.length * 2);
@@ -69,16 +69,32 @@ public class ArrayDeque <T> {
         size += 1;
         nextLast = nextLast + 1;
     }
+    @Override
     public T get(int index){
         return items[index];
     }
-    public void removeFirst(){
+    @Override
+    public T removeFirst(){
+        T x = items[nextFirst +1];
         size -= 1;
         nextFirst = nextFirst +1;
+        return x;
     }
-    public void removeLast(){
+    @Override
+    public T removeLast(){
+        T x = items[nextLast - 1];
         size -= 1;
         nextLast = nextLast - 1;
+        return x;
+    }
+    @Override
+    public void printDeque(){
+        int x = nextFirst + 1;
+        while (x < nextLast){
+            System.out.print(items[x]);
+            x += 1;
+        }
+        System.out.println();
     }
     public T getLast(){
         return items[nextLast -1];
