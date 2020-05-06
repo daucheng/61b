@@ -8,8 +8,8 @@ import byog.TileEngine.Tileset;
  *  Draws a world that is mostly empty except for a small region.
  */
 public class BoringWorldDemo {
-    private static final int WIDTH = 60;
-    private static final int HEIGHT = 30;
+    private static final int WIDTH = 100;
+    private static final int HEIGHT = 50;
 
     public static void main(String[] args) {
         // initialize the tile rendering engine with a window of size WIDTH x HEIGHT
@@ -25,9 +25,9 @@ public class BoringWorldDemo {
         }
 
         // fills in a block 14 tiles wide by 4 tiles tall
-        for (int x = 20; x < 35; x += 1) {
-            for (int y = 5; y < 10; y += 1) {
-                world[x][y] = Tileset.WALL;
+        for (int x = 10; x < 90; x += 1) {
+            for (int y = 10; y < 40; y += 1) {
+                world[x][y] = Tileset.FLOWER;
             }
         }
 

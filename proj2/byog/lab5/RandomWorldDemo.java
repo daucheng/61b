@@ -25,10 +25,11 @@ public class RandomWorldDemo {
         int width = tiles.length;
         for (int x = 0; x < width; x += 1) {
             for (int y = 0; y < height; y += 1) {
-                tiles[x][y] = randomTile();
+                tiles[x][y] = Tileset.FLOWER;
             }
         }
     }
+
 
     /** Picks a RANDOM tile with a 33% change of being
      *  a wall, 33% chance of being a flower, and 33%
