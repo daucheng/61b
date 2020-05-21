@@ -96,11 +96,6 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T>{
             current = countHelper(current);
             return x;
         }
-        @Override
-        public void remove() {
-            rb[current] = null;
-            current = countHelper(current);
-        }
     }//end of private Iterator
 
 

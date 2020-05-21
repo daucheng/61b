@@ -4,7 +4,7 @@ import java.util.Set;
  * append "implements Map61B<K,V>" to the end of your "public class..."
  * declaration, though you can use other formal type parameters if you'd like.
  */
-public interface Map61B<K, V> extends Iterable<K> {
+public interface    Map61B<K, V> extends Iterable<K> {
     /** Removes all of the mappings from this map. */
     void clear();
 
